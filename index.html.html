@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bernard & Sylvestre — Électricien · Plombier Paris 18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111010;
+  --white:#FAFAF7;
+  --yellow:#F5C842;
+  --yellow-dark:#D4A700;
+  --grey:#6B6B6B;
+  --grey-light:#EBEBEB;
+  --grey-ultra:#F3F3F0;
+  --red:#D83A2F;
+  --radius:6px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:68px;
+  background:rgba(17,16,16,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(245,200,66,0.15);
+  transition:box-shadow .3s;
+}
+#nav.scrolled{box-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.nav-logo{
+  font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.05rem;
+  color:var(--white);text-decoration:none;letter-spacing:-.02em;
+  display:flex;align-items:center;gap:.5rem;
+}
+.nav-logo .bolt{color:var(--yellow);font-size:1.1rem}
+.nav-menu{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-menu a{
+  font-size:.82rem;font-weight:600;color:rgba(255,255,255,.55);
+  text-decoration:none;letter-spacing:.06em;text-transform:uppercase;
+  transition:color .2s;padding:.2rem 0;
+  border-bottom:2px solid transparent;
+}
+.nav-menu a:hover,.nav-menu a.active{color:var(--yellow);border-bottom-color:var(--yellow)}
+.nav-phone{
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--yellow);color:var(--ink);
+  padding:.55rem 1.3rem;border-radius:100px;
+  font-weight:700;font-size:.85rem;text-decoration:none;
+  transition:background .2s,transform .2s;white-space:nowrap;
+}
+.nav-phone:hover{background:#ffe04a;transform:scale(1.03)}
+
+/* ─── PAGES ─── */
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:block}
+
+/* ═══════════════════ PAGE: ACCUEIL ═══════════════════ */
+
+/* HERO */
+#hero{
+  background:var(--ink);
+  min-height:calc(100vh - 68px);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:80px 5% 60px;
+  gap:4rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 600px 400px at 70% 50%, rgba(245,200,66,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 300px 300px at 20% 80%, rgba(245,200,66,.04) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-grid-pattern{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-left{position:relative;z-index:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(245,200,66,.12);border:1px solid rgba(245,200,66,.3);
+  color:var(--yellow);font-size:.75rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;
+}
+.hero-tag .dot{width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h1.hero-title{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(2.4rem,5.5vw,4.8rem);
+  font-weight:900;
+  color:var(--white);
+  line-height:1;
+  letter-spacing:-.03em;
+  margin-bottom:1.5rem;
+}
+h1.hero-title .line2{color:var(--yellow);display:block}
+h1.hero-title .line3{
+  font-size:clamp(1.2rem,2.5vw,2rem);
+  font-weight:400;font-family:'Manrope',sans-serif;
+  color:rgba(255,255,255,.4);
+  display:block;margin-top:.5rem;letter-spacing:0;
+}
+.hero-desc{
+  font-size:1rem;color:rgba(255,255,255,.5);
+  font-weight:300;max-width:440px;
+  line-height:1.8;margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-yellow{
+  background:var(--yellow);color:var(--ink);
+  padding:.9rem 2rem;border-radius:100px;
+  font-weight:700;font-size:.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:all .2s;letter-spacing:.02em;white-space:nowrap;
+}
+.btn-yellow:hover{background:#ffe04a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,200,66,.3)}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,.65);
+  padding:.9rem 2rem;border-radius:100px;
+  font-weight:600;font-size:.9rem;text-decoration:none;
+  border:1px solid rgba(255,255,255,.15);
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:all .2s;white-space:nowrap;
+}
+.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+.hero-trust{
+  display:flex;gap:2rem;margin-top:3rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  flex-wrap:wrap;
+}
+.hero-trust-item{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.8rem;color:rgba(255,255,255,.4);
+  font-weight:500;
+}
+.hero-trust-item .icon{font-size:1rem}
+
+/* HERO RIGHT — Urgence card */
+.hero-right{position:relative;z-index:1}
+.urgence-card{
+  background:var(--yellow);
+  border-radius:20px;
+  padding:2.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.urgence-card::before{
+  content:'URGENCE';
+  position:absolute;right:-20px;top:-10px;
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:5rem;color:rgba(0,0,0,.06);letter-spacing:-.03em;
+}
+.urg-label{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(0,0,0,.5);margin-bottom:1rem;
+}
+.urg-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:2.4rem;color:var(--ink);letter-spacing:-.02em;
+  margin-bottom:.3rem;
+}
+.urg-sub{font-size:.85rem;color:rgba(0,0,0,.5);margin-bottom:1.5rem}
+.urg-hours{
+  display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem;
+}
+.urg-hour-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,0,0,.06);border-radius:8px;padding:.6rem 1rem;
+  font-size:.82rem;font-weight:600;color:var(--ink);
+}
+.urg-hour-row .badge{
+  background:var(--ink);color:var(--yellow);
+  font-size:.7rem;padding:.2rem .6rem;border-radius:100px;
+  font-weight:700;letter-spacing:.06em;
+}
+.urg-cta{
+  display:block;text-align:center;
+  background:var(--ink);color:var(--yellow);
+  padding:1rem;border-radius:12px;
+  font-family:'Unbounded',sans-serif;font-weight:700;
+  font-size:.95rem;text-decoration:none;letter-spacing:.02em;
+  transition:all .2s;
+}
+.urg-cta:hover{background:#1a1a1a;transform:translateY(-2px)}
+
+/* Stats bar */
+.stats-bar{
+  background:var(--yellow);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:2rem 1.5rem;
+  border-right:1px solid rgba(0,0,0,.1);
+  text-align:center;
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:2.2rem;color:var(--ink);
+}
+.stat-label{font-size:.75rem;font-weight:600;color:rgba(0,0,0,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem}
+
+/* Certifs band */
+.certifs-band{
+  background:var(--white);padding:3rem 5%;
+  display:flex;align-items:center;gap:4rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--grey-light);
+}
+.certifs-label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
+.certif-item{
+  display:flex;align-items:center;gap:.7rem;
+  font-weight:600;font-size:.9rem;color:var(--ink);
+}
+.certif-item .c-icon{font-size:1.4rem}
+
+/* Services section */
+.section-wrap{padding:100px 5%}
+.section-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--yellow-dark);margin-bottom:.8rem;
+}
+h2.section-title{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:clamp(1.8rem,4vw,3rem);
+  line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem;max-width:560px;
+}
+.section-sub{
+  font-size:1rem;color:var(--grey);max-width:480px;
+  line-height:1.8;margin-bottom:4rem;font-weight:300;
+}
+
+/* Services grid */
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--grey-light);
+  border:1px solid var(--grey-light);
+}
+.svc-card{
+  background:var(--white);padding:2.5rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .25s;cursor:default;
+}
+.svc-card:hover{background:var(--grey-ultra)}
+.svc-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:3.5rem;color:rgba(0,0,0,.04);
+  line-height:1;margin-bottom:.5rem;
+  transition:color .3s;
+}
+.svc-card:hover .svc-num{color:rgba(245,200,66,.18)}
+.svc-icon-wrap{
+  width:48px;height:48px;background:var(--ink);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1.3rem;
+}
+.svc-name{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.7rem;letter-spacing:-.01em}
+.svc-desc{font-size:.88rem;color:var(--grey);line-height:1.7;font-weight:400;margin-bottom:1.2rem}
+.svc-link{
+  font-size:.8rem;font-weight:700;color:var(--ink);
+  text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  border-bottom:2px solid var(--yellow);padding-bottom:2px;
+  transition:all .2s;cursor:pointer;
+}
+.svc-link:hover{color:var(--yellow-dark)}
+.svc-bar{
+  position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--yellow);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.svc-card:hover .svc-bar{transform:scaleX(1)}
+
+/* Pourquoi nous */
+.why-section{background:var(--ink);padding:100px 5%}
+.why-section .section-title{color:var(--white)}
+.why-section .section-eyebrow{color:rgba(245,200,66,.7)}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  background:rgba(255,255,255,.06);margin-top:4rem;
+}
+.why-card{
+  background:rgba(255,255,255,.02);padding:2.5rem;
+  display:flex;gap:1.5rem;
+  transition:background .25s;
+}
+.why-card:hover{background:rgba(255,255,255,.05)}
+.why-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:1.8rem;color:rgba(245,200,66,.2);flex-shrink:0;
+  line-height:1;width:40px;
+}
+.why-content h3{font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:.5rem}
+.why-content p{font-size:.88rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300}
+
+/* Avis */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.avis-card{
+  background:var(--grey-ultra);
+  padding:2rem;border-radius:var(--radius);
+  border-top:3px solid var(--yellow);
+  transition:transform .25s;
+}
+.avis-card:hover{transform:translateY(-4px)}
+.stars{color:var(--yellow-dark);font-size:.95rem;letter-spacing:.08em;margin-bottom:1rem}
+.avis-text{font-size:.9rem;line-height:1.75;color:var(--ink);font-style:italic;margin-bottom:1.2rem;font-weight:300}
+.avis-meta{display:flex;align-items:center;gap:.7rem}
+.avis-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--ink);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;flex-shrink:0;
+}
+.avis-name{font-weight:700;font-size:.85rem}
+.avis-src{font-size:.75rem;color:var(--grey)}
+
+.score-strip{
+  margin-top:4rem;background:var(--ink);border-radius:12px;
+  padding:2.5rem 3rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap;
+}
+.score-big{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:4.5rem;color:var(--yellow);line-height:1;
+}
+.score-info{flex:1}
+.score-info strong{font-size:1.2rem;color:var(--white);display:block;margin-bottom:.3rem}
+.score-info span{font-size:.85rem;color:rgba(255,255,255,.4)}
+.score-bar-wrap{flex:2;min-width:200px}
+.score-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
+.score-row span{font-size:.8rem;color:rgba(255,255,255,.5);width:15px;text-align:right}
+.score-bar-bg{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;background:var(--yellow);border-radius:3px}
+.score-row .pct{font-size:.78rem;color:rgba(255,255,255,.35);width:32px}
+
+/* Zones section */
+.zones-section{background:var(--grey-ultra);padding:100px 5%}
+.zones-map-wrap{
+  margin-top:3rem;display:grid;
+  grid-template-columns:1fr 280px;gap:4rem;align-items:start;
+}
+.zones-list{display:flex;flex-wrap:wrap;gap:.6rem}
+.zone-pill{
+  background:var(--white);border:1px solid var(--grey-light);
+  padding:.5rem 1.1rem;border-radius:100px;
+  font-size:.82rem;font-weight:600;cursor:default;
+  transition:all .2s;
+}
+.zone-pill:hover{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.zone-pill.primary{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.zone-info-box{
+  background:var(--white);border-radius:12px;padding:2rem;
+  border:1px solid var(--grey-light);
+}
+.zone-info-box h3{font-weight:700;font-size:1rem;margin-bottom:1rem}
+.zone-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;font-size:.85rem}
+.zone-row .icon{font-size:1rem;flex-shrink:0}
+
+/* Contact section */
+.contact-section{padding:100px 5%;background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-top:4rem}
+.contact-info-box{display:flex;flex-direction:column;gap:1.8rem}
+.cinfo-item{display:flex;gap:1rem;align-items:flex-start}
+.cinfo-icon{
+  width:44px;height:44px;background:var(--ink);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.cinfo-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:.2rem}
+.cinfo-value{font-size:1rem;font-weight:600;color:var(--ink)}
+.cinfo-value a{color:var(--ink);text-decoration:none;transition:color .2s}
+.cinfo-value a:hover{color:var(--yellow-dark)}
+.cinfo-sub{font-size:.82rem;color:var(--grey);margin-top:.2rem}
+
+.form-card{
+  background:var(--ink);border-radius:16px;padding:3rem;
+  position:relative;overflow:hidden;
+}
+.form-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(245,200,66,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.form-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.4rem;color:var(--white);margin-bottom:.5rem}
+.form-sub{font-size:.85rem;color:rgba(255,255,255,.35);margin-bottom:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fgroup label{
+  display:block;font-size:.73rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.35);margin-bottom:.5rem;
+}
+.fgroup input,.fgroup select,.fgroup textarea{
+  width:100%;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--white);padding:.8rem 1rem;
+  font-family:'Manrope',sans-serif;font-size:.9rem;
+  outline:none;border-radius:var(--radius);
+  transition:border-color .2s;
+}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:var(--yellow)}
+.fgroup input::placeholder,.fgroup textarea::placeholder{color:rgba(255,255,255,.2)}
+.fgroup select option{background:#1a1a1a}
+.fgroup textarea{resize:vertical;min-height:90px}
+.fgroup.full{grid-column:1/-1}
+.submit-btn{
+  width:100%;background:var(--yellow);color:var(--ink);
+  border:none;padding:1rem;border-radius:100px;
+  font-family:'Unbounded',sans-serif;font-weight:700;
+  font-size:.9rem;letter-spacing:.04em;cursor:pointer;
+  margin-top:.5rem;transition:all .2s;
+}
+.submit-btn:hover{background:#ffe04a;transform:translateY(-2px)}
+
+/* ═══════════════════ PAGE: ÉLECTRICITÉ ═══════════════════ */
+.page-hero{
+  background:var(--ink);padding:100px 5% 80px;
+  position:relative;overflow:hidden;
+}
+.page-hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 500px 300px at 80% 50%,rgba(245,200,66,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.ph-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(245,200,66,.6);margin-bottom:1rem;
+}
+h1.ph-title{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:clamp(2.2rem,5vw,4.5rem);color:var(--white);
+  line-height:1;letter-spacing:-.03em;margin-bottom:1.5rem;
+}
+h1.ph-title span{color:var(--yellow)}
+.ph-desc{
+  font-size:1rem;color:rgba(255,255,255,.45);max-width:560px;
+  line-height:1.8;margin-bottom:2.5rem;font-weight:300;
+}
+.ph-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.ph-tag{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.6);padding:.4rem .9rem;border-radius:100px;
+  font-size:.78rem;font-weight:600;
+}
+
+.presta-list{display:flex;flex-direction:column;gap:2px;margin-top:4rem;background:var(--grey-light)}
+.presta-item{
+  background:var(--white);padding:2rem 2.5rem;
+  display:flex;align-items:flex-start;gap:2rem;
+  transition:background .2s;
+}
+.presta-item:hover{background:var(--grey-ultra)}
+.presta-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:1.2rem;color:var(--yellow-dark);flex-shrink:0;
+  width:36px;line-height:1;margin-top:.1rem;
+}
+.presta-content h3{font-weight:700;font-size:1.05rem;margin-bottom:.4rem}
+.presta-content p{font-size:.88rem;color:var(--grey);line-height:1.7}
+.presta-price{
+  margin-left:auto;flex-shrink:0;text-align:right;padding-left:1rem;
+}
+.price-val{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.1rem;color:var(--ink)}
+.price-note{font-size:.75rem;color:var(--grey);margin-top:.2rem}
+
+/* Tarifs table */
+.tarifs-table{width:100%;border-collapse:collapse;margin-top:2rem}
+.tarifs-table th{
+  text-align:left;padding:1rem 1.5rem;
+  background:var(--ink);color:var(--white);
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.04em;
+}
+.tarifs-table td{
+  padding:1.1rem 1.5rem;border-bottom:1px solid var(--grey-light);
+  font-size:.9rem;
+}
+.tarifs-table tr:hover td{background:var(--grey-ultra)}
+.price-badge{
+  display:inline-block;background:var(--yellow);color:var(--ink);
+  padding:.25rem .7rem;border-radius:100px;
+  font-weight:700;font-size:.82rem;
+}
+
+/* ═══════════════════ PAGE: PLOMBERIE ═══════════════════ */
+/* (réutilise les classes page-hero + presta-list) */
+
+/* ═══════════════════ PAGE: AVIS ═══════════════════ */
+.avis-page-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:4rem;
+}
+.avis-page-card{
+  background:var(--white);border:1px solid var(--grey-light);
+  border-radius:10px;padding:2rem;
+  transition:box-shadow .25s,transform .25s;
+}
+.avis-page-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.07);transform:translateY(-3px)}
+.avis-platform{
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:.7rem;
+}
+.avis-rating-stars{font-size:1rem;color:var(--yellow-dark);margin-bottom:1rem}
+.avis-body{font-size:.9rem;line-height:1.75;color:var(--ink);font-style:italic;margin-bottom:1.5rem;font-weight:300}
+.avis-foot{display:flex;align-items:center;gap:.8rem}
+.avis-av2{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--ink);color:var(--yellow);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.9rem;flex-shrink:0;
+}
+.avis-n{font-weight:700;font-size:.88rem}
+.avis-d{font-size:.75rem;color:var(--grey)}
+
+.summary-card{
+  background:var(--ink);border-radius:16px;padding:3rem;
+  display:flex;align-items:center;gap:4rem;margin-top:4rem;flex-wrap:wrap;
+}
+.sum-num{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:5.5rem;color:var(--yellow);line-height:1;flex-shrink:0;
+}
+.sum-right{flex:1}
+.sum-right h3{font-family:'Unbounded',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.sum-right p{color:rgba(255,255,255,.4);font-size:.88rem;margin-bottom:1.5rem}
+.sum-bars{display:flex;flex-direction:column;gap:.5rem}
+.sum-bar-row{display:flex;align-items:center;gap.7rem;gap:.7rem}
+.sum-bar-row span:first-child{font-size:.78rem;color:rgba(255,255,255,.4);width:12px;text-align:right}
+.sum-bar-bg{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px}
+.sum-bar-fill{height:100%;border-radius:3px;background:var(--yellow)}
+.sum-bar-row .count{font-size:.75rem;color:rgba(255,255,255,.3);width:20px}
+
+/* ═══════════════════ PAGE: CONTACT ═══════════════════ */
+.contact-full{padding:100px 5%}
+.contact-full-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;margin-top:4rem;align-items:start}
+
+.map-placeholder{
+  background:var(--grey-ultra);border-radius:12px;
+  height:300px;display:flex;align-items:center;justify-content:center;
+  border:2px dashed var(--grey-light);margin-top:2rem;font-size:.88rem;color:var(--grey);
+  flex-direction:column;gap:.5rem;text-align:center;
+}
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+footer{
+  background:#0a0a0a;padding:4rem 5% 2rem;
+}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand .footer-logo{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  color:var(--white);font-size:1.1rem;display:flex;align-items:center;gap:.4rem;
+  margin-bottom:1rem;
+}
+.footer-brand .footer-logo .bolt{color:var(--yellow)}
+.footer-brand p{font-size:.82rem;color:rgba(255,255,255,.3);line-height:1.7;max-width:260px}
+.footer-col h4{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.35);
+  margin-bottom:1.2rem;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col ul li a{
+  font-size:.85rem;color:rgba(255,255,255,.4);text-decoration:none;
+  transition:color .2s;cursor:pointer;
+}
+.footer-col ul li a:hover{color:var(--yellow)}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:1.5rem;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.2)}
+.footer-bottom .certifs-mini{display:flex;gap:1.2rem;align-items:center}
+.certif-mini-tag{
+  font-size:.72rem;background:rgba(245,200,66,.12);color:rgba(245,200,66,.6);
+  padding:.25rem .7rem;border-radius:100px;font-weight:600;
+}
+
+/* Urgence fixed band */
+.urg-band{
+  position:fixed;bottom:0;left:0;right:0;z-index:199;
+  background:var(--red);color:var(--white);
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  padding:.8rem 5%;font-size:.85rem;font-weight:700;
+}
+.urg-band a{
+  background:var(--white);color:var(--red);
+  padding:.4rem 1.2rem;border-radius:100px;
+  font-weight:700;text-decoration:none;font-size:.82rem;
+  transition:all .2s;
+}
+.urg-band a:hover{transform:scale(1.05)}
+.urg-band .close-urg{
+  position:absolute;right:1.5rem;background:none;border:none;
+  color:rgba(255,255,255,.5);cursor:pointer;font-size:1.2rem;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav-menu{display:none}
+  #hero{grid-template-columns:1fr;padding:60px 5% 40px}
+  .hero-right{display:none}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .certifs-band{gap:2rem}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .avis-grid,.avis-page-grid{grid-template-columns:1fr}
+  .zones-map-wrap{grid-template-columns:1fr}
+  .contact-grid,.contact-full-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .summary-card{flex-direction:column}
+  .urg-band .close-urg{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" onclick="showPage('accueil')">
+    <span class="bolt">⚡</span> Bernard & Sylvestre
+  </a>
+  <ul class="nav-menu">
+    <li><a onclick="showPage('accueil')" id="nav-accueil" class="active">Accueil</a></li>
+    <li><a onclick="showPage('electricite')" id="nav-electricite">Électricité</a></li>
+    <li><a onclick="showPage('plomberie')" id="nav-plomberie">Plomberie</a></li>
+    <li><a onclick="showPage('avis')" id="nav-avis">Avis clients</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <a href="tel:0156080060" class="nav-phone">📞 01 56 08 00 60</a>
+</nav>
+
+<!-- URGENCE BAND -->
+<div class="urg-band" id="urgBand">
+  🔴 Urgence 24h/24 — Panne électrique, fuite d'eau ? On intervient vite.
+  <a href="tel:0156080060">Appel urgent : 01 56 08 00 60</a>
+  <button class="close-urg" onclick="document.getElementById('urgBand').style.display='none'">✕</button>
+</div>
+
+<!-- ═══════════════════ PAGE ACCUEIL ═══════════════════ -->
+<div class="page active" id="page-accueil">
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="hero-left">
+      <div class="hero-tag"><span class="dot"></span> Disponible 7j/7 — Île-de-France</div>
+      <h1 class="hero-title">
+        Votre artisan<br>de confiance
+        <span class="line2">depuis 1991.</span>
+        <span class="line3">Paris 18 · Île-de-France</span>
+      </h1>
+      <p class="hero-desc">Électricité générale, plomberie, rénovation complète. Devis gratuit, déplacement offert, tarif juste. Élus parmi les 5 meilleurs artisans de Paris.</p>
+      <div class="hero-actions">
+        <a href="mailto:artisansbernard@hotmail.fr" class="btn-yellow">✉ Devis gratuit en 2h</a>
+        <a onclick="showPage('electricite')" class="btn-ghost">Voir nos services →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="icon">🏅</span> Top 5 Paris 2017 & 2018</div>
+        <div class="hero-trust-item"><span class="icon">✅</span> Certifié RGE</div>
+        <div class="hero-trust-item"><span class="icon">🛡️</span> Garantie décennale</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="urgence-card">
+        <div class="urg-label">⚡ Numéro d'urgence</div>
+        <div class="urg-num">01 56 08 00 60</div>
+        <div class="urg-sub">Intervention rapide, tarif juste</div>
+        <div class="urg-hours">
+          <div class="urg-hour-row">Lundi – Samedi <span class="badge">8h – 20h</span></div>
+          <div class="urg-hour-row">Urgences <span class="badge">7j/7</span></div>
+          <div class="urg-hour-row">Devis gratuit <span class="badge">OFFERT</span></div>
+        </div>
+        <a href="tel:0156080060" class="urg-cta">📞 Appeler maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Ans d'expérience</div></div>
+    <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Note Pages Jaunes</div></div>
+    <div class="stat-item"><div class="stat-num">64+</div><div class="stat-label">Avis vérifiés</div></div>
+    <div class="stat-item"><div class="stat-num">85€</div><div class="stat-label">Taux horaire clair</div></div>
+  </div>
+
+  <!-- Certifs band -->
+  <div class="certifs-band">
+    <span class="certifs-label">Nos certifications</span>
+    <div class="certif-item"><span class="c-icon">🏗️</span> Membre CAPEB</div>
+    <div class="certif-item"><span class="c-icon">🌿</span> RGE Qualit'ENR</div>
+    <div class="certif-item"><span class="c-icon">🌡️</span> Chauffage Plus</div>
+    <div class="certif-item"><span class="c-icon">🛡️</span> Assurance décennale</div>
+    <div class="certif-item"><span class="c-icon">📋</span> Devis conforme DTU</div>
+  </div>
+
+  <!-- Services -->
+  <section class="section-wrap">
+    <div class="section-eyebrow">Nos prestations</div>
+    <h2 class="section-title">Un seul artisan, toutes les solutions.</h2>
+    <p class="section-sub">Plomberie, électricité, rénovation — on gère votre chantier de A à Z avec un seul interlocuteur.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon-wrap">⚡</div>
+        <div class="svc-name">Électricité générale</div>
+        <p class="svc-desc">Installation, remise aux normes, tableau Legrand/Schneider, dépannage panne, mise en conformité DTU. Devis gratuit.</p>
+        <a class="svc-link" onclick="showPage('electricite')">En savoir plus →</a>
+        <div class="svc-bar"></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon-wrap">🔧</div>
+        <div class="svc-name">Plomberie & Chauffage</div>
+        <p class="svc-desc">Fuite d'eau, chauffe-eau, salle de bain, chaudière. Intervention rapide dans le 18e et toute l'IDF.</p>
+        <a class="svc-link" onclick="showPage('plomberie')">En savoir plus →</a>
+        <div class="svc-bar"></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon-wrap">🏠</div>
+        <div class="svc-name">Rénovation complète</div>
+        <p class="svc-desc">Carrelage, peinture, cuisine, salle de bain. Tous corps d'état coordonnés par un seul professionnel de confiance.</p>
+        <a class="svc-link" onclick="showPage('contact')">Demander un devis →</a>
+        <div class="svc-bar"></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon-wrap">🚨</div>
+        <div class="svc-name">Dépannage d'urgence</div>
+        <p class="svc-desc">Coupure de courant, fuite majeure, chauffe-eau HS ? Nos artisans interviennent vite, sans surfacturation d'urgence.</p>
+        <a class="svc-link" href="tel:0156080060">Appeler →</a>
+        <div class="svc-bar"></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon-wrap">🌱</div>
+        <div class="svc-name">Énergie & Bornes IRVE</div>
+        <p class="svc-desc">Installation bornes de recharge véhicule électrique, domotique, ventilation. Certifiés RGE pour éligibilité aux aides.</p>
+        <a class="svc-link" onclick="showPage('electricite')">Voir les prestations →</a>
+        <div class="svc-bar"></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon-wrap">🛁</div>
+        <div class="svc-name">Salle de bain clé en main</div>
+        <p class="svc-desc">Conception, fourniture, pose. Plomberie, carrelage, électricité, peinture. Votre projet de bout en bout, sans stress.</p>
+        <a class="svc-link" onclick="showPage('contact')">Demander un devis →</a>
+        <div class="svc-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi nous -->
+  <section class="why-section">
+    <div class="section-eyebrow">Pourquoi nous choisir</div>
+    <h2 class="section-title" style="color:var(--white)">Ce qui nous différencie des autres.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-content"><h3>Tarifs justes et transparents</h3><p>85€/h main d'œuvre, annoncé à l'avance. On ne facture pas la recherche de panne aux résidents du 18e. Pas de mauvaise surprise.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-content"><h3>Un seul interlocuteur</h3><p>L'artisan qui établit votre devis gère votre chantier de A à Z. Pas de sous-traitance surprise, pas de transmission de dossier.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-content"><h3>Honnêteté avant tout</h3><p>Un client nous a rapporté un devis concurrent à 4 800€. Nous avons résolu son problème pour 110€. Notre réputation, c'est ça.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-content"><h3>30 ans d'expérience locale</h3><p>Fondé en 2004, diplômés depuis 1990-1991. On connaît le parc immobilier parisien, ses anomalies, ses spécificités. Expertise réelle.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis rapide -->
+  <section class="section-wrap">
+    <div class="section-eyebrow">Avis clients vérifiés</div>
+    <h2 class="section-title">64 clients satisfaits. Lisez-les.</h2>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p class="avis-text">"Un autre artisan nous demandait 4 800€ pour une coupure de courant totale. Artisans Bernard et Sylvestre ont tout réglé pour 110€. Des gens d'une honnêteté rare."</p>
+        <div class="avis-meta"><div class="avis-avatar">M</div><div><div class="avis-name">Martine R.</div><div class="avis-src">Paris 13e · Pages Jaunes</div></div></div>
+      </div>
+      <div class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p class="avis-text">"Remise aux normes électriques suite à anomalies DPE. Chaque étape expliquée avant intervention. Extrêmement professionnel. Je n'appelle personne d'autre désormais."</p>
+        <div class="avis-meta"><div class="avis-avatar">F</div><div><div class="avis-name">Frédéric L.</div><div class="avis-src">Paris 17e · Pages Jaunes</div></div></div>
+      </div>
+      <div class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p class="avis-text">"Changement chauffe-eau rapide et soigné. M. Bernard est d'une rigueur incroyable. Propreté irréprochable du chantier. Le professionnel de référence du quartier."</p>
+        <div class="avis-meta"><div class="avis-avatar">C</div><div><div class="avis-name">Caroline M.</div><div class="avis-src">Paris 15e · Pages Jaunes</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a onclick="showPage('avis')" class="btn-yellow" style="display:inline-flex">Voir tous les avis →</a>
+    </div>
+  </section>
+
+  <!-- Zones -->
+  <section class="zones-section">
+    <div class="section-eyebrow">Zones d'intervention</div>
+    <h2 class="section-title">On se déplace gratuitement dans tout Paris & l'IDF.</h2>
+    <div class="zones-map-wrap">
+      <div class="zones-list">
+        <div class="zone-pill primary">Paris 18e ★</div>
+        <div class="zone-pill primary">Paris 9e</div>
+        <div class="zone-pill primary">Paris 13e</div>
+        <div class="zone-pill">Paris 5e</div>
+        <div class="zone-pill">Paris 10e</div>
+        <div class="zone-pill">Paris 11e</div>
+        <div class="zone-pill">Paris 12e</div>
+        <div class="zone-pill">Paris 15e</div>
+        <div class="zone-pill">Paris 17e</div>
+        <div class="zone-pill">Paris 19e</div>
+        <div class="zone-pill">Paris 20e</div>
+        <div class="zone-pill">Neuilly-sur-Seine</div>
+        <div class="zone-pill">Boulogne-Billancourt</div>
+        <div class="zone-pill">Vincennes</div>
+        <div class="zone-pill">Saint-Denis</div>
+        <div class="zone-pill">Montreuil</div>
+        <div class="zone-pill">+ Toute l'Île-de-France</div>
+      </div>
+      <div class="zone-info-box">
+        <h3>📍 Notre siège</h3>
+        <div class="zone-row"><span class="icon">🏠</span> 86 rue Marcadet, 75018 Paris</div>
+        <div class="zone-row"><span class="icon">📞</span> 01 44 40 02 61 (standard)</div>
+        <div class="zone-row"><span class="icon">🚨</span> 01 56 08 00 60 (urgences)</div>
+        <div class="zone-row"><span class="icon">✉️</span> artisansbernard@hotmail.fr</div>
+        <div class="zone-row"><span class="icon">🕐</span> Lun–Sam 8h–20h</div>
+        <div class="zone-row"><span class="icon">🚗</span> Déplacement gratuit IDF</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact rapide -->
+  <section class="contact-section">
+    <div class="section-eyebrow">Devis gratuit</div>
+    <h2 class="section-title">Obtenez votre devis sous 2h.</h2>
+    <div class="contact-grid">
+      <div class="contact-info-box">
+        <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Téléphone urgences</div><div class="cinfo-value"><a href="tel:0156080060">01 56 08 00 60</a></div><div class="cinfo-sub">Disponible 7j/7</div></div></div>
+        <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Standard</div><div class="cinfo-value"><a href="tel:0144400261">01 44 40 02 61</a></div><div class="cinfo-sub">Lun–Sam 8h–20h</div></div></div>
+        <div class="cinfo-item"><div class="cinfo-icon">✉️</div><div><div class="cinfo-label">Email</div><div class="cinfo-value"><a href="mailto:artisansbernard@hotmail.fr">artisansbernard@hotmail.fr</a></div><div class="cinfo-sub">Réponse sous 24h</div></div></div>
+        <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Adresse</div><div class="cinfo-value">86 rue Marcadet</div><div class="cinfo-sub">75018 Paris — Métro Lamarck-Caulaincourt</div></div></div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">Demande de devis</div>
+        <div class="form-sub">Gratuit · Sans engagement · Réponse en 2h</div>
+        <div class="form-row">
+          <div class="fgroup"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"/></div>
+          <div class="fgroup"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"/></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup"><label>Type de prestation</label><select><option>Électricité générale</option><option>Dépannage panne</option><option>Tableau électrique</option><option>Plomberie</option><option>Chauffe-eau</option><option>Rénovation salle de bain</option><option>Rénovation complète</option><option>Urgence</option></select></div>
+          <div class="fgroup"><label>Arrondissement / Ville</label><input type="text" placeholder="Paris 18e"/></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup full"><label>Décrivez votre besoin</label><textarea placeholder="Décrivez votre problème ou projet..."></textarea></div>
+        </div>
+        <button class="submit-btn" id="submitBtn">Envoyer ma demande →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ PAGE ÉLECTRICITÉ ═══════════════════ -->
+<div class="page" id="page-electricite">
+  <section class="page-hero">
+    <div class="ph-eyebrow">Nos services</div>
+    <h1 class="ph-title">Électricité<br><span>Paris 18 & IDF.</span></h1>
+    <p class="ph-desc">Installation, rénovation, dépannage, mise aux normes. Équipe de 4 artisans diplômés depuis 1990-1991, certifiés RGE. Tarif horaire clair : 85€ HT.</p>
+    <div class="ph-tags">
+      <span class="ph-tag">✅ RGE Qualit'ENR</span>
+      <span class="ph-tag">🛡️ Garantie décennale</span>
+      <span class="ph-tag">🚗 Déplacement gratuit</span>
+      <span class="ph-tag">📋 Devis gratuit</span>
+      <span class="ph-tag">🏅 Top 5 Paris 2017-2018</span>
+    </div>
+  </section>
+
+  <section class="section-wrap">
+    <div class="section-eyebrow">Prestations électriques</div>
+    <h2 class="section-title">Ce qu'on fait pour vous.</h2>
+    <div class="presta-list">
+      <div class="presta-item">
+        <div class="presta-num">01</div>
+        <div class="presta-content"><h3>Tableau électrique — Remplacement & mise aux normes</h3><p>Changement tableau Legrand ou Schneider, disjoncteur différentiel 63A 30mA, câblage de terre. Durée 2 à 5h selon installation existante.</p></div>
+        <div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Devis gratuit</div></div>
+      </div>
+      <div class="presta-item">
+        <div class="presta-num">02</div>
+        <div class="presta-content"><h3>Dépannage & Recherche de panne électrique</h3><p>Diagnostic précis à l'arrivée, explication détaillée avant toute intervention. Tarif moyen 85€–130€. Gratuit pour résidents du 18e.</p></div>
+        <div class="presta-price"><div class="price-val">85–130€</div><div class="price-note">Gratuit Paris 18e</div></div>
+      </div>
+      <div class="presta-item">
+        <div class="presta-num">03</div>
+        <div class="presta-content"><h3>Rénovation électrique complète d'appartement</h3><p>En apparent ou encastré, selon norme NF C 15-100. Un seul interlocuteur du devis à la livraison. Garantie 2 ans sur tous les travaux.</p></div>
+        <div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Garanti 2 ans</div></div>
+      </div>
+      <div class="presta-item">
+        <div class="presta-num">04</div>
+        <div class="presta-content"><h3>Installation borne de recharge IRVE</h3><p>Borne recharge véhicule électrique en parking ou garage. Installation certifiée RGE, éligible aides CEE et crédit d'impôt.</p></div>
+        <div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Aides disponibles</div></div>
+      </div>
+      <div class="presta-item">
+        <div class="presta-num">05</div>
+        <div class="presta-content"><h3>Mise en conformité — Rapport expertise DPE</h3><p>Remise aux normes suite à diagnostic DPE ou vente immobilière. Rapport d'expertise électrique fourni. Conformité Consuel.</p></div>
+        <div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Rapport inclus</div></div>
+      </div>
+      <div class="presta-item">
+        <div class="presta-num">06</div>
+        <div class="presta-content"><h3>Traitement des surcharges & court-circuits</h3><p>Changement fusible, sécurisation court-circuit, installation disjoncteur différentiel type A pour cuisine. Protection complète du matériel.</p></div>
+        <div class="presta-price"><div class="price-val">85€/h</div><div class="price-note">+ fournitures</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:5rem">
+      <div class="section-eyebrow">Tarifs indicatifs</div>
+      <h2 class="section-title" style="font-size:1.8rem">Nos tarifs, clairs et affichés.</h2>
+      <table class="tarifs-table">
+        <thead><tr><th>Prestation</th><th>Tarif indicatif</th><th>Remarque</th></tr></thead>
+        <tbody>
+          <tr><td>Taux horaire main d'œuvre</td><td><span class="price-badge">85€ HT</span></td><td>Annoncé à l'avance</td></tr>
+          <tr><td>Déplacement</td><td><span class="price-badge">Gratuit</span></td><td>Paris 18e et IDF</td></tr>
+          <tr><td>Devis</td><td><span class="price-badge">Gratuit</span></td><td>Diagnostic inclus</td></tr>
+          <tr><td>Recherche de panne</td><td><span class="price-badge">85–130€</span></td><td>Gratuit Paris 18e</td></tr>
+          <tr><td>Changement tableau électrique</td><td><span class="price-badge">Sur devis</span></td><td>Variable selon existant</td></tr>
+          <tr><td>Rénovation complète appartement</td><td><span class="price-badge">Sur devis</span></td><td>Devis détaillé fourni</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section-wrap" style="background:var(--grey-ultra);margin-top:-2rem">
+    <div class="section-eyebrow">J'ai une panne électrique</div>
+    <h2 class="section-title">Que faire en cas de panne ?</h2>
+    <p class="section-sub">Avant d'appeler, quelques vérifications rapides à faire.</p>
+    <div class="why-grid" style="background:var(--grey-light)">
+      <div class="why-card" style="background:var(--white)"><div class="why-num" style="color:var(--yellow-dark)">1.</div><div class="why-content"><h3 style="color:var(--ink)">Vérifiez si c'est général</h3><p style="color:var(--grey)">Regardez si vos voisins ont aussi une coupure. Si oui, contactez Enedis directement — ce n'est pas une panne de votre installation.</p></div></div>
+      <div class="why-card" style="background:var(--white)"><div class="why-num" style="color:var(--yellow-dark)">2.</div><div class="why-content"><h3 style="color:var(--ink)">Vérifiez votre tableau</h3><p style="color:var(--grey)">Regardez si un disjoncteur a sauté. Si vous le reenclenchez et qu'il re-saute immédiatement, c'est une surcharge — appelez-nous.</p></div></div>
+      <div class="why-card" style="background:var(--white)"><div class="why-num" style="color:var(--yellow-dark)">3.</div><div class="why-content"><h3 style="color:var(--ink)">Appelez-nous</h3><p style="color:var(--grey)">Si vous ne trouvez pas l'origine, appelez le 01 56 08 00 60. On intervient vite, on explique, on facture juste. Pas de bricolage.</p></div></div>
+      <div class="why-card" style="background:var(--white)"><div class="why-num" style="color:var(--yellow-dark)">4.</div><div class="why-content"><h3 style="color:var(--ink)">Ne touchez pas aux fils</h3><p style="color:var(--grey)">Évitez absolument de toucher à des câbles sans couper le disjoncteur principal. Confiez tout travail électrique à un professionnel.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="tel:0156080060" class="btn-yellow" style="display:inline-flex">📞 Urgence : 01 56 08 00 60</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ PAGE PLOMBERIE ═══════════════════ -->
+<div class="page" id="page-plomberie">
+  <section class="page-hero">
+    <div class="ph-eyebrow">Nos services</div>
+    <h1 class="ph-title">Plomberie<br><span>Paris 18 & IDF.</span></h1>
+    <p class="ph-desc">Fuite d'eau, chauffe-eau, salle de bain, chaudière — intervention rapide dans Paris 18 et toute l'Île-de-France. Devis gratuit, déplacement offert.</p>
+    <div class="ph-tags">
+      <span class="ph-tag">🚗 Déplacement gratuit</span>
+      <span class="ph-tag">📋 Devis gratuit</span>
+      <span class="ph-tag">🛡️ Garantie 2 ans</span>
+      <span class="ph-tag">🌡️ RGE Chauffage Plus</span>
+    </div>
+  </section>
+
+  <section class="section-wrap">
+    <div class="section-eyebrow">Prestations plomberie</div>
+    <h2 class="section-title">Tout ce qui touche à l'eau et au chauffage.</h2>
+    <div class="presta-list">
+      <div class="presta-item"><div class="presta-num">01</div><div class="presta-content"><h3>Détection & réparation fuite d'eau</h3><p>Recherche de fuite apparente ou cachée, réparation ou remplacement des tuyauteries. Intervention rapide pour limiter les dégâts.</p></div><div class="presta-price"><div class="price-val">Urgence</div><div class="price-note">Intervention rapide</div></div></div>
+      <div class="presta-item"><div class="presta-num">02</div><div class="presta-content"><h3>Remplacement ballon d'eau chaude & chauffe-eau</h3><p>Changement chauffe-eau électrique, thermodynamique ou gaz. Toutes marques, tous formats. Garantie constructeur + pose 2 ans.</p></div><div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Garanti 2 ans</div></div></div>
+      <div class="presta-item"><div class="presta-num">03</div><div class="presta-content"><h3>Installation & rénovation salle de bain</h3><p>Conception et réalisation complète. Plomberie, carrelage, faïence, électricité, peinture. Un seul artisan du début à la fin.</p></div><div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Clé en main</div></div></div>
+      <div class="presta-item"><div class="presta-num">04</div><div class="presta-content"><h3>Entretien & dépannage chaudière</h3><p>Entretien annuel obligatoire, dépannage panne chaudière gaz ou fioul. Vérification sécurités, nettoyage brûleur, réglage combustion.</p></div><div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Entretien annuel</div></div></div>
+      <div class="presta-item"><div class="presta-num">05</div><div class="presta-content"><h3>Débouchage canalisations</h3><p>Évier, WC, douche, baignoire, colonnes. Débouchage mécanique ou haute pression. Résultat garanti ou nouvelle intervention offerte.</p></div><div class="presta-price"><div class="price-val">85€/h</div><div class="price-note">+ fournitures</div></div></div>
+      <div class="presta-item"><div class="presta-num">06</div><div class="presta-content"><h3>Robinetterie & sanitaires</h3><p>Remplacement mitigeur, robinet, WC suspendu, douche à l'italienne. Toutes marques, conseils sur les économies d'eau.</p></div><div class="presta-price"><div class="price-val">Sur devis</div><div class="price-note">Fourniture comprise</div></div></div>
+    </div>
+  </section>
+
+  <div style="padding:0 5% 80px;text-align:center">
+    <a onclick="showPage('contact')" class="btn-yellow" style="display:inline-flex;font-size:1rem;padding:1.1rem 2.5rem">Demander un devis gratuit →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE AVIS ═══════════════════ -->
+<div class="page" id="page-avis">
+  <section class="page-hero">
+    <div class="ph-eyebrow">Avis clients</div>
+    <h1 class="ph-title">Ce que disent<br><span>nos clients.</span></h1>
+    <p class="ph-desc">64 avis vérifiés sur Pages Jaunes. Note parfaite 5/5. Des clients qui reviennent et qui nous recommandent.</p>
+  </section>
+  <section class="section-wrap">
+    <div class="summary-card">
+      <div class="sum-num">5.0</div>
+      <div class="sum-right">
+        <h3>Note parfaite</h3>
+        <p>64 avis vérifiés Pages Jaunes · Fondés en 2004</p>
+        <div class="sum-bars">
+          <div class="sum-bar-row"><span>5</span><div class="sum-bar-bg"><div class="sum-bar-fill" style="width:95%"></div></div><span class="count">61</span></div>
+          <div class="sum-bar-row"><span>4</span><div class="sum-bar-bg"><div class="sum-bar-fill" style="width:5%"></div></div><span class="count">3</span></div>
+          <div class="sum-bar-row"><span>3</span><div class="sum-bar-bg"><div class="sum-bar-fill" style="width:0%"></div></div><span class="count">0</span></div>
+          <div class="sum-bar-row"><span>2</span><div class="sum-bar-bg"><div class="sum-bar-fill" style="width:0%"></div></div><span class="count">0</span></div>
+          <div class="sum-bar-row"><span>1</span><div class="sum-bar-bg"><div class="sum-bar-fill" style="width:0%"></div></div><span class="count">0</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="avis-page-grid">
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Électricité</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Un autre électricien nous demandait 4 800€ pour une coupure de courant totale. Artisans Bernard et Sylvestre ont tout résolu pour 110€. Une honnêteté et un professionnalisme incroyables, rarissimes dans ce milieu."</p><div class="avis-foot"><div class="avis-av2">M</div><div><div class="avis-n">Martine R.</div><div class="avis-d">Paris 13e</div></div></div></div>
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Mise aux normes</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Remise aux normes électrique complète suite à anomalies relevées lors du DPE. Chaque étape expliquée en détail, chaque problème documenté. Professionnel remarquable, je recommande sans réserve."</p><div class="avis-foot"><div class="avis-av2">F</div><div><div class="avis-n">Frédéric L.</div><div class="avis-d">Paris 17e</div></div></div></div>
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Chauffe-eau</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Remplacement du chauffe-eau, intervention rapide et chantier d'une propreté irréprochable. M. Bernard est d'une rigueur exceptionnelle. L'artisan de référence du quartier, sans aucun doute."</p><div class="avis-foot"><div class="avis-av2">C</div><div><div class="avis-n">Caroline M.</div><div class="avis-d">Paris 15e</div></div></div></div>
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Dépannage</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Panne électrique complète un samedi soir. Intervention le lendemain matin, diagnostic précis, réparation en 1h30. Tarif très raisonnable. J'appelle désormais systématiquement Bernard et Sylvestre."</p><div class="avis-foot"><div class="avis-av2">P</div><div><div class="avis-n">Philippe V.</div><div class="avis-d">Paris 18e</div></div></div></div>
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Rénovation</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Rénovation complète de la salle de bain. Un seul interlocuteur pour tout (plomberie, carrelage, électricité). Respect des délais, budget maîtrisé. Résultat magnifique, je suis ravie."</p><div class="avis-foot"><div class="avis-av2">S</div><div><div class="avis-n">Sophie D.</div><div class="avis-d">Paris 9e</div></div></div></div>
+      <div class="avis-page-card"><div class="avis-platform">Pages Jaunes · Tableau électrique</div><div class="avis-rating-stars">★★★★★</div><p class="avis-body">"Changement tableau électrique + mise aux normes complète. Explications claires, devis respecté à l'euro près. Ces artisans ne cherchent pas à gonfler la facture. On revient forcément."</p><div class="avis-foot"><div class="avis-av2">T</div><div><div class="avis-n">Thomas B.</div><div class="avis-d">Boulogne</div></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="tel:0156080060" class="btn-yellow" style="display:inline-flex">📞 Nous rejoindre : 01 56 08 00 60</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ PAGE CONTACT ═══════════════════ -->
+<div class="page" id="page-contact">
+  <section class="page-hero">
+    <div class="ph-eyebrow">Contact & Devis</div>
+    <h1 class="ph-title">Parlons de<br><span>votre projet.</span></h1>
+    <p class="ph-desc">Devis gratuit sous 2h, déplacement offert dans tout Paris et l'IDF. On répond à chaque demande personnellement.</p>
+  </section>
+  <section class="contact-full">
+    <div class="contact-full-grid">
+      <div>
+        <div class="contact-info-box">
+          <div class="cinfo-item"><div class="cinfo-icon">🚨</div><div><div class="cinfo-label">Urgences 7j/7</div><div class="cinfo-value"><a href="tel:0156080060">01 56 08 00 60</a></div><div class="cinfo-sub">Panne, fuite, urgence</div></div></div>
+          <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Standard Lun–Sam</div><div class="cinfo-value"><a href="tel:0144400261">01 44 40 02 61</a></div><div class="cinfo-sub">8h – 20h</div></div></div>
+          <div class="cinfo-item"><div class="cinfo-icon">✉️</div><div><div class="cinfo-label">Email</div><div class="cinfo-value"><a href="mailto:artisansbernard@hotmail.fr">artisansbernard@hotmail.fr</a></div><div class="cinfo-sub">Réponse sous 24h</div></div></div>
+          <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Adresse</div><div class="cinfo-value">86 rue Marcadet, 75018 Paris</div><div class="cinfo-sub">Métro Lamarck-Caulaincourt (ligne 12)</div></div></div>
+        </div>
+        <div class="map-placeholder">
+          <div style="font-size:2rem">📍</div>
+          <div><strong>86 rue Marcadet</strong><br>75018 Paris</div>
+          <div style="font-size:.78rem;margin-top:.3rem">Cliquez pour ouvrir dans Google Maps</div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="form-title">Demande de devis gratuit</div>
+        <div class="form-sub">Sans engagement · Réponse garantie en 2h</div>
+        <div class="form-row">
+          <div class="fgroup"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"/></div>
+          <div class="fgroup"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"/></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup"><label>Email</label><input type="email" placeholder="jean@exemple.fr"/></div>
+          <div class="fgroup"><label>Ville / Arrondissement</label><input type="text" placeholder="Paris 18e"/></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup"><label>Type de prestation</label><select><option>Électricité générale</option><option>Dépannage panne électrique</option><option>Tableau électrique</option><option>Mise aux normes DPE</option><option>Borne de recharge IRVE</option><option>Plomberie / Fuite d'eau</option><option>Chauffe-eau</option><option>Chaudière</option><option>Rénovation salle de bain</option><option>Rénovation complète</option><option>Urgence</option></select></div>
+          <div class="fgroup"><label>Type de bien</label><select><option>Appartement</option><option>Maison</option><option>Local commercial</option><option>Immeuble</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup full"><label>Décrivez votre besoin</label><textarea style="min-height:120px" placeholder="Décrivez votre problème ou projet en détail..."></textarea></div>
+        </div>
+        <button class="submit-btn" id="submitBtn2">Envoyer ma demande →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><span class="bolt">⚡</span> Bernard & Sylvestre</div>
+      <p>Artisans électriciens et plombiers à Paris 18 depuis 2004. Diplômés 1990-1991. Certifiés RGE, membres CAPEB. Top 5 Paris 2017 & 2018.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a onclick="showPage('electricite')">Électricité générale</a></li>
+        <li><a onclick="showPage('electricite')">Dépannage panne</a></li>
+        <li><a onclick="showPage('electricite')">Tableau électrique</a></li>
+        <li><a onclick="showPage('plomberie')">Plomberie</a></li>
+        <li><a onclick="showPage('plomberie')">Chauffe-eau</a></li>
+        <li><a onclick="showPage('plomberie')">Salle de bain</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="showPage('accueil')">Accueil</a></li>
+        <li><a onclick="showPage('electricite')">Électricité</a></li>
+        <li><a onclick="showPage('plomberie')">Plomberie</a></li>
+        <li><a onclick="showPage('avis')">Avis clients</a></li>
+        <li><a onclick="showPage('contact')">Contact & Devis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:0156080060">📞 01 56 08 00 60</a></li>
+        <li><a href="tel:0144400261">📞 01 44 40 02 61</a></li>
+        <li><a href="mailto:artisansbernard@hotmail.fr">✉ artisansbernard@hotmail.fr</a></li>
+        <li><a>📍 86 rue Marcadet, 75018</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Artisans Bernard & Sylvestre — CAPEB · RGE Qualit'ENR · Assurance décennale</p>
+    <div class="certifs-mini">
+      <span class="certif-mini-tag">RGE</span>
+      <span class="certif-mini-tag">CAPEB</span>
+      <span class="certif-mini-tag">Décennale</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-menu a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30);
+});
+
+function setupForm(id){
+  const btn=document.getElementById(id);
+  if(!btn)return;
+  btn.addEventListener('click',function(){
+    this.textContent='✅ Demande envoyée ! On vous contacte dans les 2h.';
+    this.style.background='#2a9d5c';this.style.color='#fff';
+    setTimeout(()=>{this.textContent='Envoyer ma demande →';this.style.background='';this.style.color='';},5000);
+  });
+}
+setupForm('submitBtn');
+setupForm('submitBtn2');
+
+document.querySelector('.map-placeholder').addEventListener('click',()=>{
+  window.open('https://maps.google.com/?q=86+rue+Marcadet+75018+Paris','_blank');
+});
+
+// Scroll reveal
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:0.08});
+document.querySelectorAll('.svc-card,.avis-card,.why-card,.presta-item,.avis-page-card,.cinfo-item').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition='opacity .5s ease, transform .5s ease';
+  revealObs.observe(el);
+});
+</script>
+</body>
+</html>
